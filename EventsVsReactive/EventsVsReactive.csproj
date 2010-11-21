@@ -96,16 +96,16 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MouseMovements\MouseWatcherForm.designer.cs">
-      <DependentUpon>..\MouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>..\MouseMovements\MouseWatcherForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MouseMovements\MouseWatcherForm.resx">
-      <DependentUpon>..\MouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>..\MouseMovements\MouseWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="MouseMovements\ReactiveMouseWatcherForm.designer.cs">
-      <DependentUpon>..\ReactiveMouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>..\MouseMovements\ReactiveMouseWatcherForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MouseMovements\ReactiveMouseWatcherForm.resx">
-      <DependentUpon>..\ReactiveMouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>..\MouseMovements\ReactiveMouseWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="MouseDrawing\DrawingForm.cs">
       <SubType>Form</SubType>
