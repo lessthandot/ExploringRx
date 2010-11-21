@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockMaster3000", "ClockMaster3000\ClockMaster3000.csproj", "{51B31B8E-E2FD-4BD3-A771-7FC5C7016A52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsVsReactive", "EventsVsReactive\EventsVsReactive.csproj", "{6F7E6719-3491-4C70-BCAB-831C9B4587DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{51B31B8E-E2FD-4BD3-A771-7FC5C7016A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51B31B8E-E2FD-4BD3-A771-7FC5C7016A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B31B8E-E2FD-4BD3-A771-7FC5C7016A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7E6719-3491-4C70-BCAB-831C9B4587DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7E6719-3491-4C70-BCAB-831C9B4587DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7E6719-3491-4C70-BCAB-831C9B4587DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7E6719-3491-4C70-BCAB-831C9B4587DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
