@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace EventsVsReactive {
 	public partial class MouseWatcherForm : Form {
-		//.Let(mm => mm.Zip(mm.Skip(1), (prev, cur) =>
 		public MouseWatcherForm() {
 			InitializeComponent();
 			this.MouseMove += UpdateLabel;

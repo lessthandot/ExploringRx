@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,18 +35,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.CoreEx, Version=1.0.2617.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.CoreEx.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Observable, Version=1.0.0.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.Observable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive, Version=1.0.2617.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.Reactive.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -58,41 +46,35 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.CoreEx, Version=1.0.2617.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.CoreEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Observable, Version=1.0.0.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.Observable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=1.0.2617.102, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Reactive Extensions\v1.0.2617.0\Net35\System.Reactive.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DrawingForm.designer.cs">
-      <DependentUpon>DrawingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormSelector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSelector.designer.cs">
       <DependentUpon>FormSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="MouseWatcherForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MouseWatcherForm.designer.cs">
-      <DependentUpon>MouseWatcherForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormSelector.resx">
       <DependentUpon>FormSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MouseWatcherForm.resx">
-      <DependentUpon>MouseWatcherForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReactiveMouseWatcherForm.resx">
-      <DependentUpon>ReactiveMouseWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -107,20 +89,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ReactiveDrawingForm.cs">
+    <Compile Include="MouseMovements\MouseWatcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReactiveDrawingForm.designer.cs">
-      <DependentUpon>ReactiveDrawingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReactiveMouseWatcherForm.cs">
+    <Compile Include="MouseMovements\ReactiveMouseWatcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReactiveMouseWatcherForm.designer.cs">
-      <DependentUpon>ReactiveMouseWatcherForm.cs</DependentUpon>
+    <Compile Include="MouseMovements\MouseWatcherForm.designer.cs">
+      <DependentUpon>..\MouseWatcherForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MouseMovements\MouseWatcherForm.resx">
+      <DependentUpon>..\MouseWatcherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="MouseMovements\ReactiveMouseWatcherForm.designer.cs">
+      <DependentUpon>..\ReactiveMouseWatcherForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MouseMovements\ReactiveMouseWatcherForm.resx">
+      <DependentUpon>..\ReactiveMouseWatcherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="MouseDrawing\DrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MouseDrawing\ReactiveDrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MouseDrawing\DrawingForm.designer.cs">
+      <DependentUpon>..\DrawingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MouseDrawing\ReactiveDrawingForm.designer.cs">
+      <DependentUpon>..\ReactiveDrawingForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -128,4 +129,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="MouseMovements\" />
+    <Folder Include="MouseDrawing\" />
+  </ItemGroup>
 </Project>
