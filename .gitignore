@@ -3,6 +3,7 @@
 *.DS_Store
 
 #Visual Studio files
+*.userprefs
 *.[Oo]bj
 *.exe
 *.pdb
@@ -30,6 +31,10 @@ obj/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+
+#monodevelop?
+*.resources
+*.pidb
 
 #Tooling
 _ReSharper*/
