@@ -42,7 +42,6 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -96,16 +95,16 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MouseMovements\MouseWatcherForm.designer.cs">
-      <DependentUpon>..\MouseMovements\MouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>MouseWatcherForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MouseMovements\MouseWatcherForm.resx">
-      <DependentUpon>..\MouseMovements\MouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>MouseWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="MouseMovements\ReactiveMouseWatcherForm.designer.cs">
-      <DependentUpon>..\MouseMovements\ReactiveMouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>ReactiveMouseWatcherForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MouseMovements\ReactiveMouseWatcherForm.resx">
-      <DependentUpon>..\MouseMovements\ReactiveMouseWatcherForm.cs</DependentUpon>
+      <DependentUpon>ReactiveMouseWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="MouseDrawing\DrawingForm.cs">
       <SubType>Form</SubType>
