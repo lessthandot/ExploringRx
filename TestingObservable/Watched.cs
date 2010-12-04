@@ -21,6 +21,10 @@ namespace TestingObservable {
 			watchers.ForEach(x => x.OnNext(message));
 		}
 
+		public void EndTransmission() {
+			watchers.ForEach(x => x.OnCompleted());
+		}
+
 		class Unsubscriber : IDisposable {
 			private List<IObserver<string>> observers;
 			private IObserver<string> observer;
