@@ -9,7 +9,7 @@ namespace TestingObservable {
 
 		public IDisposable Subscribe(IObserver<string> watcher) {
 			watchers.Add(watcher);
-			return new Unsubscriber(watchers, watcher);
+			return new Unsubscriber<string>(watchers, watcher);
 		}
 
 		public void Send(string message) {
@@ -23,21 +23,6 @@ namespace TestingObservable {
 
 		public void EndTransmission() {
 			watchers.ForEach(x => x.OnCompleted());
-		}
-
-		class Unsubscriber : IDisposable {
-			private List<IObserver<string>> observers;
-			private IObserver<string> observer;
-
-			public Unsubscriber(List<IObserver<string>> observers, IObserver<string> observer) {
-				this.observers = observers;
-				this.observer = observer;
-			}
-
-			public void Dispose() {
-				if (observer != null && observers.Contains(observer))
-					observers.Remove(observer);
-			}
 		}
 	}
 }

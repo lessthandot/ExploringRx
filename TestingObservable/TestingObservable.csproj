@@ -65,8 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\UnsubscriberTest.cs" />
     <Compile Include="Tests\WatchedTest.cs" />
     <Compile Include="Tests\WatcherTest.cs" />
+    <Compile Include="Unsubscriber.cs" />
     <Compile Include="Watched.cs" />
     <Compile Include="Watcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
