@@ -53,7 +53,7 @@ namespace TestingObservable.Reactive.Tests {
 		}
 
 		[Test]
-		public void Send_Throws_When_String_Is_Null() {
+		public void Send_Errors_When_String_Is_Null() {
 			var mockery = new MockRepository();
 			var subscriber = mockery.StrictMock<IObserver<string>>();
 
@@ -62,8 +62,7 @@ namespace TestingObservable.Reactive.Tests {
 			var watched = new Watched();
 
 			using (mockery.Record()) {
-				subscriber.OnError(new InvalidOperationException());
-				LastCall.IgnoreArguments();
+				subscriber.OnError(new Exception());
 				LastCall.Constraints(Is.TypeOf(typeof(ArgumentNullException))
 					&& Property.Value("Message", "Unable to process null strings\r\nParameter name: message"));
 			}

@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\DataEventArgs.cs" />
+    <Compile Include="Events\Tests\WatchedTest.cs" />
+    <Compile Include="Events\Tests\WatcherTest.cs" />
+    <Compile Include="Events\SubscriptionManager.cs" />
+    <Compile Include="Events\Watched.cs" />
+    <Compile Include="Events\Watcher.cs" />
     <Compile Include="Reactive\Tests\UnsubscriberTest.cs" />
     <Compile Include="Reactive\Tests\WatchedTest.cs" />
     <Compile Include="Reactive\Tests\WatcherTest.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace TestingObservable.Reactive {
-	class Unsubscriber<T> : IDisposable {
+	public class Unsubscriber<T> : IDisposable {
 		IList<IObserver<T>> observers;
 		IObserver<T> observer;
 
