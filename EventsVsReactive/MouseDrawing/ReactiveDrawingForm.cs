@@ -24,7 +24,19 @@ namespace EventsVsReactive {
 								previous = previous.EventArgs.Location
 							}))
 						.Repeat()
-				select pair;
+										 select pair;
+
+			//alternative
+			//var selectedMovementEvents =
+			//    from down in mouseDown
+			//    from move in mouseMove.TakeWhile(x => x.EventArgs.Button == MouseButtons.Left)
+			//        .Let(mv => mv.Zip(mouseMove.Skip(1),
+			//            (previous, current) => new {
+			//                current = current.EventArgs.Location,
+			//                previous = previous.EventArgs.Location
+			//            }))
+			//        .Repeat()
+			//    select move;
 
 			selectedMovementEvents.Subscribe(p => {
 				using (var gfx = this.CreateGraphics())
