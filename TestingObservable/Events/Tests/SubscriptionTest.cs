@@ -7,9 +7,9 @@ using Rhino.Mocks;
 
 namespace TestingObservable.Events.Tests {
 	[TestFixture]
-	public class UnsubscriberTest {
+	public class SubscriptionTest {
 		[Test]
-		public void Dispose() {
+		public void Construct_Dispose() {
 			var mockery = new MockRepository();
 			var watcher = mockery.StrictMock<IWatcher>();
 			var watched = mockery.StrictMock<IWatched>();
@@ -26,7 +26,7 @@ namespace TestingObservable.Events.Tests {
 			}
 
 			using (mockery.Playback()) {
-				var unsubscriber = new Unsubscriber(watched, watcher);
+				var unsubscriber = new Subscription(watched, watcher);
 				unsubscriber.Dispose();
 			}
 		}

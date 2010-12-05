@@ -5,13 +5,13 @@ using System.Text;
 
 namespace TestingObservable.Events {
 	//TODO: this could be equivalent to Unsubscriber in reactive model.  Not sure how valuable it is though
-	public class Unsubscriber : IDisposable {
+	public class Subscription : IDisposable {
 		IWatched subject;
 		EventHandler<DataEventArgs<string>> nextHandler;//should really be generic
 		EventHandler<DataEventArgs<Exception>> errorHandler;
 		EventHandler completeHandler;
 
-		public Unsubscriber(IWatched toWatch, 
+		public Subscription(IWatched toWatch, 
 			IWatcher watcher) {
 
 			this.nextHandler = new EventHandler<DataEventArgs<string>>(watcher.OnNext);

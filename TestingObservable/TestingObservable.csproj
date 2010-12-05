@@ -66,10 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\DataEventArgs.cs" />
-    <Compile Include="Events\Tests\UnsubscriberTest.cs" />
+    <Compile Include="Events\Tests\SubscriptionTest.cs" />
     <Compile Include="Events\Tests\WatchedTest.cs" />
     <Compile Include="Events\Tests\WatcherTest.cs" />
-    <Compile Include="Events\Unsubscriber.cs" />
+    <Compile Include="Events\Subscription.cs" />
     <Compile Include="Events\Watched.cs" />
     <Compile Include="Events\Watcher.cs" />
     <Compile Include="Reactive\Tests\UnsubscriberTest.cs" />

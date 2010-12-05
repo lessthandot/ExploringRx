@@ -17,7 +17,7 @@ namespace TestingObservable.Events {
 		public event EventHandler OnCompleted;
 
 		public IDisposable Subscribe(IWatcher watcher) {
-			return new Unsubscriber(this, watcher) as IDisposable;
+			return new Subscription(this, watcher) as IDisposable;
 		}
 		public void Send(string message) {
 			if (message == null)  {
