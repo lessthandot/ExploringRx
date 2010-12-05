@@ -16,13 +16,13 @@ namespace TestingObservable.Events.Tests {
 			
 
 			using (mockery.Record()) {
-				watched.OnNext += new EventHandler<DataEventArgs<string>>(watcher.Subject_OnNext);
-				watched.OnError += new EventHandler<DataEventArgs<Exception>>(watcher.Subject_OnError);
-				watched.OnCompleted += new EventHandler(watcher.Subject_OnCompleted);
+				watched.OnNext += new EventHandler<DataEventArgs<string>>(watcher.OnNext);
+				watched.OnError += new EventHandler<DataEventArgs<Exception>>(watcher.OnError);
+				watched.OnCompleted += new EventHandler(watcher.OnCompleted);
 
-				watched.OnNext -= new EventHandler<DataEventArgs<string>>(watcher.Subject_OnNext);
-				watched.OnError -= new EventHandler<DataEventArgs<Exception>>(watcher.Subject_OnError);
-				watched.OnCompleted -= new EventHandler(watcher.Subject_OnCompleted);
+				watched.OnNext -= new EventHandler<DataEventArgs<string>>(watcher.OnNext);
+				watched.OnError -= new EventHandler<DataEventArgs<Exception>>(watcher.OnError);
+				watched.OnCompleted -= new EventHandler(watcher.OnCompleted);
 			}
 
 			using (mockery.Playback()) {

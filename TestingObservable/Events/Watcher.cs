@@ -5,9 +5,9 @@ using System.Text;
 
 namespace TestingObservable.Events {
 	public interface IWatcher {
-		void Subject_OnCompleted(object sender, EventArgs e);
-		void Subject_OnError(object sender, DataEventArgs<Exception> e);
-		void Subject_OnNext(object sender, DataEventArgs<string> e);
+		void OnCompleted(object sender, EventArgs e);
+		void OnError(object sender, DataEventArgs<Exception> e);
+		void OnNext(object sender, DataEventArgs<string> e);
 	}
 
 	public class Watcher : IDisposable, TestingObservable.Events.IWatcher {
@@ -18,9 +18,9 @@ namespace TestingObservable.Events {
 		IDisposable unsubscriber;
 
 		public Watcher() {
-			nextHandler = new EventHandler<DataEventArgs<string>>(Subject_OnNext);
-			errorHandler = new EventHandler<DataEventArgs<Exception>>(Subject_OnError);
-			completeHandler = new EventHandler(Subject_OnCompleted);
+			nextHandler = new EventHandler<DataEventArgs<string>>(OnNext);
+			errorHandler = new EventHandler<DataEventArgs<Exception>>(OnError);
+			completeHandler = new EventHandler(OnCompleted);
 		}
 
 		public void Subscribe(IWatched subject) {
@@ -30,20 +30,20 @@ namespace TestingObservable.Events {
 			unsubscriber = subject.Subscribe(this);
 		}
 
-		public void Subject_OnNext(object sender, DataEventArgs<string> e) {
+		public void OnNext(object sender, DataEventArgs<string> e) {
 			Console.WriteLine(e.Data);
 		}
 
-		public void Subject_OnError(object sender, DataEventArgs<Exception> e) {
+		public void OnError(object sender, DataEventArgs<Exception> e) {
 			throw new InvalidOperationException("An error occured in subject of observation", e.Data);
 		}
 
-		public void Subject_OnCompleted(object sender, EventArgs e) {
+		public void OnCompleted(object sender, EventArgs e) {
 			unsubscriber.Dispose();
 		}
 
 		public void Dispose() {
-			Subject_OnCompleted(null, null);
+			OnCompleted(null, null);
 		}
 	}
 }

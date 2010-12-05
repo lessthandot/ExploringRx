@@ -14,9 +14,9 @@ namespace TestingObservable.Events {
 		public Unsubscriber(IWatched toWatch, 
 			IWatcher watcher) {
 
-			this.nextHandler = new EventHandler<DataEventArgs<string>>(watcher.Subject_OnNext);
-			this.errorHandler = new EventHandler<DataEventArgs<Exception>>(watcher.Subject_OnError);
-			this.completeHandler = new EventHandler(watcher.Subject_OnCompleted);
+			this.nextHandler = new EventHandler<DataEventArgs<string>>(watcher.OnNext);
+			this.errorHandler = new EventHandler<DataEventArgs<Exception>>(watcher.OnError);
+			this.completeHandler = new EventHandler(watcher.OnCompleted);
 
 			subject = toWatch;
 
