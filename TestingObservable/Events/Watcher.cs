@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 
 namespace TestingObservable.Events {
-	class Watcher : IDisposable {
+	public interface IWatcher {
+		void Subject_OnCompleted(object sender, EventArgs e);
+		void Subject_OnError(object sender, DataEventArgs<Exception> e);
+		void Subject_OnNext(object sender, DataEventArgs<string> e);
+	}
+
+	public class Watcher : IDisposable, TestingObservable.Events.IWatcher {
 		internal EventHandler<DataEventArgs<string>> nextHandler;
 		internal EventHandler<DataEventArgs<Exception>> errorHandler;
 		internal EventHandler completeHandler;
 		IWatched subject;
-		SubscriptionManager manager;
+		IDisposable unsubscriber;
 
 		public Watcher() {
 			nextHandler = new EventHandler<DataEventArgs<string>>(Subject_OnNext);
@@ -17,32 +23,23 @@ namespace TestingObservable.Events {
 			completeHandler = new EventHandler(Subject_OnCompleted);
 		}
 
-		public IDisposable Subscribe(IWatched toWatch) {
-			if (subject == null) {//weak attempt to prevent subscribing multiple times to same subject
-				subject = toWatch;
-
-				subject.OnNext += nextHandler;
-				subject.OnError += errorHandler;
-				subject.OnCompleted += completeHandler;
-
-				return (IDisposable)this;
+		public void Subscribe(IWatched subject) {
+			if (unsubscriber != null) {
+				throw new InvalidOperationException("This watcher is already observing a subject!");
 			}
-			throw new InvalidOperationException("This watcher is already observing a subject!");
+			unsubscriber = subject.Subscribe(this);
 		}
 
-		void Subject_OnNext(object sender, DataEventArgs<string> e) {
+		public void Subject_OnNext(object sender, DataEventArgs<string> e) {
 			Console.WriteLine(e.Data);
 		}
 
-		void Subject_OnError(object sender, DataEventArgs<Exception> e) {
+		public void Subject_OnError(object sender, DataEventArgs<Exception> e) {
 			throw new InvalidOperationException("An error occured in subject of observation", e.Data);
 		}
 
-		void Subject_OnCompleted(object sender, EventArgs e) {
-			subject.OnNext -= nextHandler;
-			subject.OnError -= errorHandler;
-			subject.OnCompleted -= completeHandler;
-			subject = null;
+		public void Subject_OnCompleted(object sender, EventArgs e) {
+			unsubscriber.Dispose();
 		}
 
 		public void Dispose() {

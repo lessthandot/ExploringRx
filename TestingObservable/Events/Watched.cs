@@ -8,6 +8,7 @@ namespace TestingObservable.Events {
 		event EventHandler<DataEventArgs<string>> OnNext;
 		event EventHandler<DataEventArgs<Exception>> OnError;
 		event EventHandler OnCompleted;
+		IDisposable Subscribe(IWatcher watcher);
 	}
 
 	public class Watched : IWatched {
@@ -15,6 +16,9 @@ namespace TestingObservable.Events {
 		public event EventHandler<DataEventArgs<Exception>> OnError;
 		public event EventHandler OnCompleted;
 
+		public IDisposable Subscribe(IWatcher watcher) {
+			return new Unsubscriber(this, watcher) as IDisposable;
+		}
 		public void Send(string message) {
 			if (message == null)  {
 				OnError(this, new DataEventArgs<Exception>(new ArgumentNullException("message", "Unable to process null strings")));

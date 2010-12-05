@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace TestingObservable.Reactive {
-	public class Watcher : IObserver<string> {
+	public class Watcher : IObserver<string>, IDisposable {
 		IDisposable unsubscriber;
 
 		public void Subscribe(IObservable<string> subject) {
@@ -25,6 +25,10 @@ namespace TestingObservable.Reactive {
 		}
 
 		public void OnCompleted() {
+			Dispose();
+		}
+
+		public void Dispose() {
 			unsubscriber.Dispose();
 		}
 	}

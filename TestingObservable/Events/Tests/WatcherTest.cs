@@ -30,17 +30,13 @@ namespace TestingObservable.Events.Tests {
 		public void Subscribe_And_Unsubscribe_On_Complete() {
 			var mockery = new MockRepository();
 			var subject = mockery.StrictMock<IWatched>();
+			var unsubscriber = mockery.StrictMock<IDisposable>();
 
 			var watcher = new Watcher();
 
 			using (mockery.Record()) {
-				subject.OnCompleted += watcher.completeHandler;
-				subject.OnError += watcher.errorHandler;
-				subject.OnNext += watcher.nextHandler;
-
-				subject.OnCompleted -= watcher.completeHandler;
-				subject.OnError -= watcher.errorHandler;
-				subject.OnNext -= watcher.nextHandler;
+				Expect.Call(subject.Subscribe(watcher)).Return(unsubscriber);
+				unsubscriber.Dispose();
 			}
 
 			using (mockery.Playback()) {
@@ -53,6 +49,7 @@ namespace TestingObservable.Events.Tests {
 		public void Subscribe_Cannot_Subscribe_Twice() {
 			var mockery = new MockRepository();
 			var subject = mockery.StrictMock<IWatched>();
+			var unsubscriber = mockery.StrictMock<IDisposable>();
 
 			var watcher = new Watcher();
 
@@ -60,9 +57,7 @@ namespace TestingObservable.Events.Tests {
 
 			using (mockery.Record())
 			using (mockery.Ordered()) {
-				subject.OnNext += watcher.nextHandler;
-				subject.OnError += watcher.errorHandler;
-				subject.OnCompleted += watcher.completeHandler;
+				Expect.Call(subject.Subscribe(watcher)).Return(unsubscriber);
 			}
 
 			using (mockery.Playback()) {
