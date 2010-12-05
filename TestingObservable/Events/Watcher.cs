@@ -11,13 +11,13 @@ namespace TestingObservable.Events {
 	}
 
 	public class Watcher : IDisposable, TestingObservable.Events.IWatcher {
-		IDisposable unsubscriber;
+		IDisposable subscription;
 
 		public void Subscribe(IWatched subject) {
-			if (unsubscriber != null) {
+			if (subscription != null) {
 				throw new InvalidOperationException("This watcher is already observing a subject!");
 			}
-			unsubscriber = subject.Subscribe(this);
+			subscription = subject.Subscribe(this);
 		}
 
 		public void OnNext(object sender, DataEventArgs<string> e) {
@@ -29,7 +29,7 @@ namespace TestingObservable.Events {
 		}
 
 		public void OnCompleted(object sender, EventArgs e) {
-			unsubscriber.Dispose();
+			subscription.Dispose();
 		}
 
 		public void Dispose() {
