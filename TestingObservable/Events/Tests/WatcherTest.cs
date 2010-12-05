@@ -17,7 +17,7 @@ namespace TestingObservable.Events.Tests {
 
 			var thrown = Assert.Throws(
 				typeof(InvalidOperationException),
-				() => watcher.errorHandler(null, new DataEventArgs<Exception>(new BadImageFormatException(innerMessage))));
+				() => watcher.OnError(null, new DataEventArgs<Exception>(new BadImageFormatException(innerMessage))));
 
 			Assert.AreEqual(outerMessage, thrown.Message);
 			//carries inner exception from subject
@@ -41,7 +41,7 @@ namespace TestingObservable.Events.Tests {
 
 			using (mockery.Playback()) {
 				watcher.Subscribe(subject);
-				watcher.completeHandler(null, null);
+				watcher.OnCompleted(null, null);
 			}
 		}
 

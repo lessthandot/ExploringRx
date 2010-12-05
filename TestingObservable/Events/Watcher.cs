@@ -11,17 +11,7 @@ namespace TestingObservable.Events {
 	}
 
 	public class Watcher : IDisposable, TestingObservable.Events.IWatcher {
-		internal EventHandler<DataEventArgs<string>> nextHandler;
-		internal EventHandler<DataEventArgs<Exception>> errorHandler;
-		internal EventHandler completeHandler;
-		IWatched subject;
 		IDisposable unsubscriber;
-
-		public Watcher() {
-			nextHandler = new EventHandler<DataEventArgs<string>>(OnNext);
-			errorHandler = new EventHandler<DataEventArgs<Exception>>(OnError);
-			completeHandler = new EventHandler(OnCompleted);
-		}
 
 		public void Subscribe(IWatched subject) {
 			if (unsubscriber != null) {
