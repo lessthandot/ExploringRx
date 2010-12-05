@@ -46,6 +46,8 @@ namespace TestingObservable.Events.Tests {
 			watched.OnError += (sender, e) => wasErrorCalled = true;
 
 			watched.Send(null);
+
+			Assert.IsTrue(wasErrorCalled);
 		}
 
 		[Test]
