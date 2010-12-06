@@ -78,8 +78,6 @@ namespace TestingObservable.Reactive.Tests {
 			var mockery = new MockRepository();
 			var subscriber = mockery.StrictMock<IObserver<string>>();
 
-			string message = null;
-
 			var watched = new Watched();
 
 			using (mockery.Record()) {
