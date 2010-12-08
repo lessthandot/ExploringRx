@@ -12,7 +12,7 @@ namespace TestingObservable.Events.Tests {
 	public class WatchedTest {
 		[Test]
 		public void Send() {
-			var watched = new Watched();
+			var watched = new Watched<string>();
 
 			var onNextCalled = false;
 
@@ -25,7 +25,7 @@ namespace TestingObservable.Events.Tests {
 
 		[Test]
 		public void Send_Multiple_Messages() {
-			var watched = new Watched();
+			var watched = new Watched<string>();
 
 			var callCount = 0;
 
@@ -39,7 +39,7 @@ namespace TestingObservable.Events.Tests {
 
 		[Test]
 		public void Send_Errors_When_String_Is_Null() {
-			var watched = new Watched();
+			var watched = new Watched<string>();
 
 			var wasErrorCalled = false;
 
@@ -52,7 +52,7 @@ namespace TestingObservable.Events.Tests {
 
 		[Test]
 		public void EndTransmission() {
-			var watched = new Watched();
+			var watched = new Watched<string>();
 
 			var onCompletedCalled = false;
 

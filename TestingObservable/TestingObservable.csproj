@@ -72,10 +72,10 @@
     <Compile Include="Events\Subscription.cs" />
     <Compile Include="Events\Watched.cs" />
     <Compile Include="Events\Watcher.cs" />
-    <Compile Include="Reactive\Tests\UnsubscriberTest.cs" />
+    <Compile Include="Reactive\Tests\SubscriptionTest.cs" />
     <Compile Include="Reactive\Tests\WatchedTest.cs" />
     <Compile Include="Reactive\Tests\WatcherTest.cs" />
-    <Compile Include="Reactive\Unsubscriber.cs" />
+    <Compile Include="Reactive\Subscription.cs" />
     <Compile Include="Reactive\Watched.cs" />
     <Compile Include="Reactive\Watcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

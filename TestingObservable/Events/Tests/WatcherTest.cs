@@ -11,7 +11,7 @@ namespace TestingObservable.Events.Tests {
 	public class WatcherTest {
 		[Test]
 		public void OnError() {
-			var watcher = new Watcher();
+			var watcher = new Watcher<string>();
 			var innerMessage = "a message";
 			var outerMessage = "An error occured in subject of observation";
 
@@ -29,10 +29,10 @@ namespace TestingObservable.Events.Tests {
 		[Test]
 		public void Subscribe_And_Unsubscribe_On_Complete() {
 			var mockery = new MockRepository();
-			var subject = mockery.StrictMock<IWatched>();
+			var subject = mockery.StrictMock<IWatched<string>>();
 			var unsubscriber = mockery.StrictMock<IDisposable>();
 
-			var watcher = new Watcher();
+			var watcher = new Watcher<string>();
 
 			using (mockery.Record()) {
 				Expect.Call(subject.Subscribe(watcher)).Return(unsubscriber);
@@ -48,10 +48,10 @@ namespace TestingObservable.Events.Tests {
 		[Test]
 		public void Subscribe_Cannot_Subscribe_Twice() {
 			var mockery = new MockRepository();
-			var subject = mockery.StrictMock<IWatched>();
+			var subject = mockery.StrictMock<IWatched<string>>();
 			var unsubscriber = mockery.StrictMock<IDisposable>();
 
-			var watcher = new Watcher();
+			var watcher = new Watcher<string>();
 
 			var message = "This watcher is already observing a subject!";
 

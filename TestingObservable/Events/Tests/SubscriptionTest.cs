@@ -11,8 +11,8 @@ namespace TestingObservable.Events.Tests {
 		[Test]
 		public void Construct_Dispose() {
 			var mockery = new MockRepository();
-			var watcher = mockery.StrictMock<IWatcher>();
-			var watched = mockery.StrictMock<IWatched>();
+			var watcher = mockery.StrictMock<IWatcher<string>>();
+			var watched = mockery.StrictMock<IWatched<string>>();
 			
 
 			using (mockery.Record()) {
@@ -26,7 +26,7 @@ namespace TestingObservable.Events.Tests {
 			}
 
 			using (mockery.Playback()) {
-				var unsubscriber = new Subscription(watched, watcher);
+				var unsubscriber = new Subscription<string>(watched, watcher);
 				unsubscriber.Dispose();
 			}
 		}

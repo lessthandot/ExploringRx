@@ -4,27 +4,27 @@ using System.Linq;
 using System.Text;
 
 namespace TestingObservable.Events {
-	public interface IWatched {
-		event EventHandler<DataEventArgs<string>> OnNext;
+	public interface IWatched<T> {
+		event EventHandler<DataEventArgs<T>> OnNext;
 		event EventHandler<DataEventArgs<Exception>> OnError;
 		event EventHandler OnCompleted;
-		IDisposable Subscribe(IWatcher watcher);
+		IDisposable Subscribe(IWatcher<T> watcher);
 	}
 
-	public class Watched : IWatched {
-		public event EventHandler<DataEventArgs<string>> OnNext;
+	public class Watched<T> : IWatched<T> {
+		public event EventHandler<DataEventArgs<T>> OnNext;
 		public event EventHandler<DataEventArgs<Exception>> OnError;
 		public event EventHandler OnCompleted;
 
-		public IDisposable Subscribe(IWatcher watcher) {
-			return new Subscription(this, watcher) as IDisposable;
+		public IDisposable Subscribe(IWatcher<T> watcher) {
+			return new Subscription<T>(this, watcher) as IDisposable;
 		}
-		public void Send(string message) {
+		public void Send(T message) {
 			if (message == null)  {
 				OnError(this, new DataEventArgs<Exception>(new ArgumentNullException("message", "Unable to process null strings")));
 				return;
 			}
-			OnNext(this, new DataEventArgs<string>(message));
+			OnNext(this, new DataEventArgs<T>(message));
 		}
 
 		public void EndTransmission() {
