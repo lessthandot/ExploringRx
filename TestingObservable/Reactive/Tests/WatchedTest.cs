@@ -64,7 +64,7 @@ namespace TestingObservable.Reactive.Tests {
 			using (mockery.Record()) {
 				subscriber.OnError(new Exception());
 				LastCall.Constraints(Is.TypeOf(typeof(ArgumentNullException))
-					&& Property.Value("Message", "Unable to process null strings\r\nParameter name: message"));
+					&& Property.Value("Message", "Unable to process null strings" + Environment.NewLine +"Parameter name: message"));
 			}
 
 			using (mockery.Playback())
@@ -77,8 +77,6 @@ namespace TestingObservable.Reactive.Tests {
 		public void EndTransmission() {
 			var mockery = new MockRepository();
 			var subscriber = mockery.StrictMock<IObserver<string>>();
-
-			string message = null;
 
 			var watched = new Watched();
 
